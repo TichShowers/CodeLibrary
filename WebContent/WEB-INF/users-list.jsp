@@ -25,6 +25,7 @@
 			<th>ID</th>
 			<th>Name</th>
 			<th>Username</th>
+			<th>Email</th>
 			<th>Actions</th>
 		</tr>
 		<c:forEach var="R" items="${model}">
@@ -32,6 +33,7 @@
 				<td>${R.id}</td>
 				<td>${R.name}</td>
 				<td>${R.username}</td>
+				<td>${R.email}</td>
 				<td>
 					<div class="btn-group btn-group-xs" role="group">
 						<a href="/CodeLib/do/user/edit/${R.id}" class="btn btn-primary">edit</a>

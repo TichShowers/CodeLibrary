@@ -107,8 +107,16 @@ public class UserController extends ResourceController {
 	public ActionResult save(int index) {
 		User user = dao.read(index);
 
+		String username = (String) session.getAttribute("login");
+		
+		if(username.equals(user.getUsername()))
+		{
+			session.setAttribute("login", getParam("username", ""));
+		}
+		
 		user.setName(getParam("name", ""));
 		user.setUsername(getParam("username", ""));
+		user.setEmail(getParam("email", ""));
 
 		dao.update(user);
 		return redirect("user");
@@ -116,7 +124,7 @@ public class UserController extends ResourceController {
 
 	@Override
 	public ActionResult save() {
-		User user = new User(0, getParam("name", ""), getParam("username", ""),
+		User user = new User(0, getParam("name", ""), getParam("username", ""), getParam("email", ""),
 				false);
 		user.changePassword(getParam("password", ""));
 

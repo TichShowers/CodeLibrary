@@ -24,6 +24,10 @@
 			<label for="name">Username</label> <input type="text" name="username"
 				value="${model.username}" class="form-control">
 		</div>
+		<div class="form-group">
+			<label for="name">Email</label> <input type="email" name="email"
+				value="${model.email}" class="form-control">
+		</div>
 		<c:if test="${ empty model}">
 			<div class="form-group">
 			<label for="name">Password</label> <input type="password" name="password"
