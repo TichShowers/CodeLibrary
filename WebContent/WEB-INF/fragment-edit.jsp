@@ -19,7 +19,7 @@
 		<h2>Create New Fragment</h2>
 	</c:if> 
 	<c:if test="${!empty model}">
-		<h2>Edit Fragment ${model.title}</h2>
+		<h2>Edit Fragment ${model.fragment.title}</h2>
 	</c:if>
 
 	<form action="/CodeLib/do/fragment/save/${model.fragment.id}"
