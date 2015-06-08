@@ -11,6 +11,11 @@ import persistence.common.DatabaseDao;
 import persistence.common.IDataAccessObject;
 import models.Language;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class LanguageDao extends DatabaseDao<Language> implements IDataAccessObject<Language>{
 
 	private final String _tableName = "languages";

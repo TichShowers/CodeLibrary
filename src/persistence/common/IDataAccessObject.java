@@ -3,6 +3,11 @@ package persistence.common;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public interface IDataAccessObject<T>
 {
     List<T> readAll();

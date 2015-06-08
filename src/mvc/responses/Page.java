@@ -7,6 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class Page extends RenderFile implements ActionResult {
 	private String viewName;
 	

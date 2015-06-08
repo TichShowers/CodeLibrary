@@ -6,6 +6,11 @@ import models.Comment;
 import models.Fragment;
 import models.Language;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class FragementView {
 	private Fragment fragment;
 	private List<Comment> comments;

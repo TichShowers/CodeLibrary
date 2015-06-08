@@ -3,6 +3,11 @@ package mvc.security;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class PasswordHasher {
 	public static String hashWithMD5(String password)
 	{

@@ -10,6 +10,11 @@ import java.util.List;
 import models.User;
 import persistence.common.DatabaseDao;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class UserDao extends DatabaseDao<User> {
 
 	public final String _tableName = "users";

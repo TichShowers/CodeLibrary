@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public abstract class DatabaseDao<T> implements IDataAccessObject<T>
 {
     Connection _connection;

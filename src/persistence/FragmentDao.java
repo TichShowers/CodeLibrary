@@ -11,6 +11,11 @@ import java.util.List;
 import models.Fragment;
 import persistence.common.DatabaseDao;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class FragmentDao extends DatabaseDao<Fragment> {
 
 	private final String _tableName = "fragments";

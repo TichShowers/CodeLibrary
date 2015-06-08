@@ -12,6 +12,11 @@ import models.Comment;
 import models.User;
 import persistence.common.DatabaseDao;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class CommentDao extends DatabaseDao<Comment> {
 
 	private UserDao userDao;

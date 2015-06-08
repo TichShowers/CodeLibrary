@@ -5,6 +5,11 @@ import java.util.List;
 import models.Fragment;
 import models.Language;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class FragmentEdit {
 	private Fragment fragment;
 	private List<Language> languages;
