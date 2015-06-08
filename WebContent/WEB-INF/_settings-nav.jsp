@@ -4,6 +4,6 @@
 
 <ul class="col-md-3 nav nav-pills nav-stacked">
 	<li class="${(param.current == 'index') ? 'active' : ''}"><a href="/CodeLib/do/settings">Main Settings</a></li>
-	<li class="${(param.current == 'password') ? 'active' : ''}"><a href="/CodeLib/do/settings/password">Edit Password</a></li>
+	<li class="${(param.current == 'password') ? 'active' : ''}"><a href="/CodeLib/do/settings/password">Change Password</a></li>
 	<li class="${(param.current == 'avatar') ? 'active' : ''}"><a href="/CodeLib/do/settings/avatar">Upload Avatar</a></li>
 </ul>

@@ -14,33 +14,37 @@
 
 	<main class="container">
 	<h2>
-		List of Languages <a href="/CodeLib/do/language/new/"
+		Languages <a href="/CodeLib/do/language/new/"
 			class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
 			New language</a>
 	</h2>
 
 	<div class="container"></div>
 
-	<table class="table table-striped table-bordered table-hover">
-		<tr>
-			<th><a href="/CodeLib/do/language/list?sort=id"
-				class="${(sort=='id')?'active':'' }">ID</a></th>
-			<th><a href="/CodeLib/do/language/list?sort=name"
-				class="${(sort=='name')?'active':'' }">Name</a></th>
-			<th>Actions</th>
-		</tr>
-		<c:forEach var="R" items="${model}">
+	<table class="table table-hover">
+		<thead>
 			<tr>
-				<td>${R.id}</td>
-				<td>${R.name}</td>
-				<td>
-					<div class="btn-group btn-group-xs" role="group">
-						<a href="/CodeLib/do/language/edit/${R.id}" class="btn btn-primary">edit</a>
-						<a href="/CodeLib/do/language/delete/${R.id}" class="btn btn-danger">delete</a>
-					</div>
-				</td>
+				<th>id</th>
+				<th>Name</th>
+				<th>Actions</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody>
+			<c:forEach var="R" items="${model}">
+				<tr>
+					<td>${R.id}</td>
+					<td>${R.name}</td>
+					<td>
+						<div class="btn-group btn-group-xs" role="group">
+							<a href="/CodeLib/do/language/edit/${R.id}"
+								class="btn btn-primary">edit</a> <a
+								href="/CodeLib/do/language/delete/${R.id}"
+								class="btn btn-danger">delete</a>
+						</div>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 	</main>
 </body>

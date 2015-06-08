@@ -20,7 +20,7 @@
 	
 	<style>
 		main { margin-top: 60px }
-		.img-inline { height: 50px; max-width: 50px; display inline-block; }
+		.img-inline { height: 50px; max-width: 50px; display inline-block; font-size: 50px; }
 		.avatar-100 { height: 100px; }
 		#users-table td { vertical-align: middle; !important }
 	</style>

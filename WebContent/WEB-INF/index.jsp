@@ -16,8 +16,8 @@
 	<h2>Code Library</h2>
 	<c:if test="${! empty model }">
 		<div class"row">
-			<div class="avatar-100 col-md-3">
-				<img src="${ model.avatar }" />
+			<div class="col-md-3">
+				<img src="${ model.avatar }" class="avatar-100"/>
 			</div>
 			<div class="col-md-9">
 				<h3>Welcome back ${ model.name }</h3>

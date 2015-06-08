@@ -18,7 +18,7 @@
 	<main class="container">
 
 	<h2>
-		Fragment ${model.fragment.title} <a href="/CodeLib/do/fragment/new/"
+		Fragment ${model.fragment.title} <a href="/CodeLib/do/fragment/edit/${ model.fragment.id }"
 			class="btn btn-sm btn-primary"><span
 			class="glyphicon glyphicon-pencil"></span> Edit this fragment</a>
 	</h2>
@@ -44,7 +44,7 @@
 					<fmt:formatDate value="${comment.at}" pattern="EEEE, dd MMMM yyyy" />
 					:
 				</p>
-				<p>${comment.what}</p></li>
+				<p><i class="glyphicon glyphicon-comment"></i> ${comment.what}</p></li>
 		</c:forEach>
 		<li class="list-group-item">
 			<form action="/CodeLib/do/comment/new/${model.fragment.id}"

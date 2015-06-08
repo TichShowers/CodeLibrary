@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <header class="container">
-
-	<div class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<button class="btn btn-success navbar-toggle" data-toggle="collapse"
@@ -12,38 +11,40 @@
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
 
-				<div id="logo">
-					<a href='/CodeLib'><h4>Code Library</h4></a>
-				</div>
+				<a href='/CodeLib' class="navbar-brand">Code Library</a>
 			</div>
 
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<c:if test="${! empty name}">
-						<li class="nav"><a>Welcome back, ${name}!</a></li>
-					</c:if>
-					<li class="nav ${(empty param.current) ? 'active' : ''}"><a
-						href="/CodeLib/do">Home</a></li>
-					<li class="nav ${(param.current == 'language') ? 'active' : ''}"><a
-						href="/CodeLib/do/language">Languages</a></li>
-					<li class="nav ${(param.current == 'fragment') ? 'active' : ''}"><a
-						href="/CodeLib/do/fragment">Fragments</a></li>
+				<ul class="nav navbar-nav">
+					<li class="${(empty param.current) ? 'active' : ''}"><a
+						href="/CodeLib/do"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+					<li class="${(param.current == 'language') ? 'active' : ''}"><a
+						href="/CodeLib/do/language"><i class="glyphicon glyphicon-book"></i> Languages</a></li>
+					<li class="${(param.current == 'fragment') ? 'active' : ''}"><a
+						href="/CodeLib/do/fragment"><i class="glyphicon glyphicon-leaf"></i> Fragments</a></li>
 					<c:if test="${!empty admin && admin}">
-						<li class="nav ${(param.current == 'user') ? 'active' : ''}"><a
-							href="/CodeLib/do/user">Users</a></li>
+						<li class="${(param.current == 'user') ? 'active' : ''}"><a
+							href="/CodeLib/do/user"><i class="glyphicon glyphicon-user"></i> Users</a></li>
 					</c:if>
-					<c:if test="${! empty username}">
-						<li class="nav ${(param.current == 'setting') ? 'active' : ''}"><a
-							href="/CodeLib/do/settings">Settings</a></li>
-					</c:if>
-					<li class="nav ${(param.current == 'login') ? 'active' : ''}"><c:if
-							test="${empty username}">
-							<a href="/CodeLib/do/login">Log in</a>
-						</c:if> <c:if test="${! empty username}">
-							<a href="/CodeLib/do/logout">Log out</a>
-						</c:if></li>
-
 				</ul>
-				<div></div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<c:if test="${! empty username}">
+						<li class="${(param.current == 'setting') ? 'active' : ''}"><a
+							href="/CodeLib/do/settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+					</c:if>
+					<li class="${(param.current == 'login') ? 'active' : ''}">
+						<c:if test="${empty username}">
+							<a href="/CodeLib/do/login"><i class="glyphicon glyphicon-log-in"></i> Log in</a>
+						</c:if> 
+						<c:if test="${! empty username}">
+							<a href="/CodeLib/do/logout"><i class="glyphicon glyphicon-off"></i> Log out</a>
+						</c:if>
+					</li>
+				</ul>
+				
+				<p class="navbar-text navbar-right">Welcome back, ${name}!</p>
 			</div>
+		</div>
+	</div>
 </header>

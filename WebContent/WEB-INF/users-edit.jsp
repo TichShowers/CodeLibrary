@@ -12,9 +12,16 @@
 		<jsp:param name="current" value="user" />
 	</jsp:include>
 	<main class="container">
-	<h2>Edit a User</h2>
+	
+	<c:if test="${ empty model}">
+		<h2>Create New User</h2>
+	</c:if> 
+	<c:if test="${!empty model}">
+		<h2>Edit User ${model.name}</h2>
+	</c:if>
 
-	<form action="/CodeLib/do/user/save/${model.id}" method=post class="form">
+	<form action="/CodeLib/do/user/save/${model.id}" method=post
+		class="form">
 		<input type="hidden" name="id" value="${model.id}">
 		<div class="form-group">
 			<label for="name">Name</label> <input type="text" name="name"
@@ -30,12 +37,13 @@
 		</div>
 		<c:if test="${ empty model}">
 			<div class="form-group">
-			<label for="name">Password</label> <input type="password" name="password"
-				value="" class="form-control">
-		</div>
+				<label for="name">Password</label> <input type="password"
+					name="password" value="" class="form-control">
+			</div>
 		</c:if>
 		<div class="form-group">
-			<input type="submit" value="Save" class="btn btn-primary">
+			<input type="submit" value="Save" class="btn btn-primary"> <a
+				class="btn btn-default" href="/CodeLib/do/user">Cancel</a>
 		</div>
 	</form>
 	</main>

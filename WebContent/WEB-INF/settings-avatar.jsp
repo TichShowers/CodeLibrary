@@ -12,7 +12,7 @@
 		<jsp:param name="current" value="settings" />
 	</jsp:include>
 	<main class="container">
-	<h2>Change Password</h2>
+	<h2>Upload Avatar</h2>
 
 	<div class="row">
 		<jsp:include page="_settings-nav.jsp">

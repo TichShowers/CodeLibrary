@@ -12,7 +12,7 @@
 		<jsp:param name="current" value="user" />
 	</jsp:include>
 	<main class="container">
-	<h2>Edit a password of User ${model.name}</h2>
+	<h2>Change Password of User ${model.name}</h2>
 
 	<form action="/CodeLib/do/user/password/${model.id}" method=post
 		class="form">
@@ -25,7 +25,7 @@
 				name="confirm" value="" class="form-control">
 		</div>
 		<div class="form-group">
-			<input type="submit" value="Save" class="btn btn-primary">
+			<input type="submit" value="Save" class="btn btn-primary"> <a class="btn btn-default" href="/CodeLib/do/user">Cancel</a>
 		</div>
 	</form>
 	</main>
