@@ -13,7 +13,7 @@ import persistence.common.DatabaseDao;
 public class UserDao extends DatabaseDao<User> {
 
 	public final String _tableName = "users";
-	public final String[] _columnNames = { "id", "name", "username", "password", "email", "admin" };
+	public final String[] _columnNames = { "id", "name", "username", "password", "email", "avatar", "admin" };
 
 	public UserDao(Connection connection) {
 		super(connection);
@@ -39,9 +39,10 @@ public class UserDao extends DatabaseDao<User> {
 			String username = result.getString(_columnNames[2]);
 			String password = result.getString(_columnNames[3]);
 			String email = result.getString(_columnNames[4]);
-			boolean isAdmin = result.getBoolean(_columnNames[5]);
+			String avatar = result.getString(_columnNames[5]);
+			boolean isAdmin = result.getBoolean(_columnNames[6]);
 
-			User user = new User(id, name, username, email, isAdmin);
+			User user = new User(id, name, username, email, avatar, isAdmin);
 			user.setPassword(password);
 
 			list.add(user);
@@ -58,9 +59,10 @@ public class UserDao extends DatabaseDao<User> {
 			String username = result.getString(_columnNames[2]);
 			String password = result.getString(_columnNames[3]);
 			String email = result.getString(_columnNames[4]);
-			boolean isAdmin = result.getBoolean(_columnNames[5]);
+			String avatar = result.getString(_columnNames[5]);
+			boolean isAdmin = result.getBoolean(_columnNames[6]);
 
-			User user = new User(id, name, username, email, isAdmin);
+			User user = new User(id, name, username, email, avatar, isAdmin);
 			user.setPassword(password);
 
 			return user;
@@ -78,8 +80,9 @@ public class UserDao extends DatabaseDao<User> {
             statement.setString(2, data.getUsername());
             statement.setString(3, data.getPassword());
             statement.setString(4, data.getEmail());
-            statement.setBoolean(5, data.isAdmin());
-            statement.setInt(6, data.getId());
+            statement.setString(5, data.getAvatar());
+            statement.setBoolean(6, data.isAdmin());
+            statement.setInt(7, data.getId());
             statement.executeUpdate();
         }
         catch (SQLException ex)
@@ -97,7 +100,8 @@ public class UserDao extends DatabaseDao<User> {
             statement.setString(2, data.getUsername());
             statement.setString(3, data.getPassword());
             statement.setString(4, data.getEmail());
-            statement.setBoolean(5, data.isAdmin());
+            statement.setString(5, data.getAvatar());
+            statement.setBoolean(6, data.isAdmin());
             statement.executeUpdate();
         }
         catch (SQLException ex)
@@ -105,7 +109,4 @@ public class UserDao extends DatabaseDao<User> {
             System.out.println(LanguageDao.class.getName() + " ");
         }
 	}
-
-	
-	
 }

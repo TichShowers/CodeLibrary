@@ -1,5 +1,10 @@
 package models;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class Language {
 	private int id;
 	private String name;

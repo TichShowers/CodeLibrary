@@ -5,6 +5,11 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class ControllerFactory
 {
     private final IControllerDirectory directory;

@@ -2,6 +2,11 @@ package models;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class Fragment {
 
 	private int id;

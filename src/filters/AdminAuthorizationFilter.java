@@ -12,6 +12,11 @@ import mvc.filtering.IAccessFilter;
 import mvc.responses.ActionResult;
 import mvc.responses.ErrorResponse;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class AdminAuthorizationFilter implements IAccessFilter{
 
 	private UserDao userDao;
@@ -20,7 +25,7 @@ public class AdminAuthorizationFilter implements IAccessFilter{
 	public boolean hasAccess(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
-		String login = (String) session.getAttribute("login");
+		String login = (String) session.getAttribute("login.username");
 		
 		List<User> users = userDao.search("username", login);
 		

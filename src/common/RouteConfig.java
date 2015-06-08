@@ -4,6 +4,11 @@ import filters.AdminAuthorizationFilter;
 import mvc.AbstractRouter;
 import mvc.Route;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class RouteConfig extends AbstractRouter {
 
 	@Override
@@ -11,9 +16,6 @@ public class RouteConfig extends AbstractRouter {
 		AdminAuthorizationFilter authFilter = new AdminAuthorizationFilter();
 		
 		route("/", "home", "index");
-		route("/contact/", "home", "contact");
-		route("/social/{link}/{username}/", "home", "social");
-		route("/home/", "home", "id");
 		
 		resource("fragment");
 		resource("language");
@@ -22,6 +24,13 @@ public class RouteConfig extends AbstractRouter {
 		route("/user/demote/{id}", "user", "demote", authFilter);
 		route("/user/promote/{id}", "user", "promote", authFilter);
 		route("/user/password/{id}", "user", "password", authFilter);
+		
+		route("/comment/new/{fragment}", "comment", "new", true);
+		route("/comment/delete/{fragment}/{id}", "comment", "delete", authFilter);
+		
+		route("/settings/", "setting", "index", true);
+		route("/settings/password/", "setting", "password", true);
+		route("/settings/avatar/", "setting", "avatar", true);
 		
 		route("/login/", "auth", "login");
 		route("/logout/", "auth", "logout", true);

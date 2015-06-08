@@ -9,6 +9,11 @@ import models.User;
 import mvc.controllers.ResourceController;
 import mvc.responses.ActionResult;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class UserController extends ResourceController {
 
 	private UserDao dao;
@@ -81,13 +86,11 @@ public class UserController extends ResourceController {
 
 	@Override
 	public ActionResult show(int index) {
-		// TODO Auto-generated method stub
 		return redirect("user/edit/" + index);
 	}
 
 	@Override
 	public ActionResult create() {
-		// TODO Auto-generated method stub
 		return view("users-edit.jsp");
 	}
 
@@ -111,7 +114,8 @@ public class UserController extends ResourceController {
 		
 		if(username.equals(user.getUsername()))
 		{
-			session.setAttribute("login", getParam("username", ""));
+			session.setAttribute("login.username", getParam("username", ""));
+			session.setAttribute("login.name", getParam("name", ""));
 		}
 		
 		user.setName(getParam("name", ""));
@@ -124,7 +128,7 @@ public class UserController extends ResourceController {
 
 	@Override
 	public ActionResult save() {
-		User user = new User(0, getParam("name", ""), getParam("username", ""), getParam("email", ""),
+		User user = new User(0, getParam("name", ""), getParam("username", ""), getParam("email", ""), "",
 				false);
 		user.changePassword(getParam("password", ""));
 

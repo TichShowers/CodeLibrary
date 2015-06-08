@@ -9,6 +9,11 @@ import mvc.filtering.BasicAuthenticationFilter;
 import mvc.filtering.IAccessFilter;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public abstract class AbstractRouter {
 
 	private Map<String, Route> routes;

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class View<T> implements ActionResult {
+public class View<T> extends RenderFile implements ActionResult {
 	private T model;
 	private String viewName;
 	
@@ -28,7 +28,7 @@ public class View<T> implements ActionResult {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		super.handle(request, response);
 		request.setAttribute("model", model);
 		RequestDispatcher aDispatcher = request.getRequestDispatcher("/WEB-INF/" + viewName);
 		aDispatcher.forward(request, response);

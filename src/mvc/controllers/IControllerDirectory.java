@@ -1,6 +1,10 @@
 package mvc.controllers;
 
-
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public interface IControllerDirectory
 {
     /**

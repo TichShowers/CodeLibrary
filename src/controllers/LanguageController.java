@@ -8,6 +8,11 @@ import models.Language;
 import mvc.controllers.ResourceController;
 import mvc.responses.ActionResult;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class LanguageController extends ResourceController {
 
 	private LanguageDao dao;

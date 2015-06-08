@@ -4,23 +4,33 @@ import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 
+import models.Comment;
 import models.Fragment;
 import models.Language;
+import persistence.CommentDao;
 import persistence.FragmentDao;
 import persistence.LanguageDao;
+import viewmodels.FragementView;
 import viewmodels.FragmentEdit;
 import mvc.controllers.ResourceController;
 import mvc.responses.ActionResult;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class FragmentController extends ResourceController {
 
 	private FragmentDao fragmentDao;
 	private LanguageDao languageDao;
+	private CommentDao commentDao;
 	
 	@Override
 	public void initialize(Connection connection) {
 		fragmentDao = new FragmentDao(connection);
 		languageDao = new LanguageDao(connection);
+		commentDao = new CommentDao(connection);
 	}
 
 	@Override
@@ -31,7 +41,13 @@ public class FragmentController extends ResourceController {
 
 	@Override
 	public ActionResult show(int index) {
-		return redirect("fragment/new/" + index);
+		Fragment fragment = fragmentDao.read(index);
+		
+		List<Comment> comments = commentDao.search("fragment", fragment.getId());
+ 		
+		Language langauge = languageDao.read(fragment.getLanguage());
+		
+		return view("fragment-show.jsp", new FragementView(fragment, langauge, comments));
 	}
 
 	@Override

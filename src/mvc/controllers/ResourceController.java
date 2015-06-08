@@ -4,6 +4,11 @@ import java.util.Map;
 
 import mvc.responses.ActionResult;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public abstract class ResourceController extends MvcController {
 	
 	

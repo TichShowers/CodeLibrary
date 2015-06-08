@@ -20,9 +20,9 @@
 
 	<div class="container"></div>
 
-	<table class="table table-striped table-bordered table-hover">
+	<table class="table table-hover" id="users-table">
 		<tr>
-			<th>ID</th>
+			<th>Image</th>
 			<th>Name</th>
 			<th>Username</th>
 			<th>Email</th>
@@ -30,7 +30,9 @@
 		</tr>
 		<c:forEach var="R" items="${model}">
 			<tr>
-				<td>${R.id}</td>
+				<td><c:if test="${! empty  R.avatar }">
+						<img src="${R.avatar}" class="img-inline">
+					</c:if></td>
 				<td>${R.name}</td>
 				<td>${R.username}</td>
 				<td>${R.email}</td>
@@ -41,7 +43,8 @@
 							class="btn btn-warning">change password</a> <a
 							href="/CodeLib/do/user/delete/${R.id}" class="btn btn-danger">delete</a>
 						<c:if test="${ !R.admin }">
-							<a href="/CodeLib/do/user/promote/${R.id}" class="btn btn-default">promote</a>
+							<a href="/CodeLib/do/user/promote/${R.id}"
+								class="btn btn-default">promote</a>
 						</c:if>
 						<c:if test="${ R.admin }">
 							<a href="/CodeLib/do/user/demote/${R.id}" class="btn btn-info">demote</a>

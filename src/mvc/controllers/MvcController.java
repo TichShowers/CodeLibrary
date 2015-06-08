@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,17 +13,25 @@ import java.sql.Connection;
 
 import mvc.responses.*;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public abstract class MvcController {
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
 	protected HttpSession session;
+	protected ServletContext context;
 	private Connection connection; 
 	
-	public final ActionResult construct(HttpServletRequest request, HttpServletResponse response, Connection connection, String action, Map<String, String> parameters)
+	public final ActionResult construct(HttpServletRequest request, HttpServletResponse response, ServletContext context, Connection connection, String action, Map<String, String> parameters)
 	{
 		this.request = request;
 		this.response = response;
 		this.connection = connection;
+		this.context = context;
+		
 		this.session = request.getSession();
 		
 		this.response.setCharacterEncoding("UTF-8");	
@@ -124,5 +133,10 @@ public abstract class MvcController {
 	public ActionResult content(String content, String type)
 	{
 		return new Content(content, type);
+	}
+	
+	public ActionResult error(int error)
+	{
+		return new ErrorResponse(error);
 	}
 }

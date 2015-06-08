@@ -27,7 +27,7 @@
 		<c:forEach var="R" items="${model}">
 			<tr>
 				<td>${R.id}</td>
-				<td>${R.title}</td>
+				<td><a href="/CodeLib/do/fragment/show/${R.id}" >${R.title}</</a></td>
 				<td>${R.at}</td>
 			    <td>
 			    	<div class="btn-group btn-group-xs" role="group">

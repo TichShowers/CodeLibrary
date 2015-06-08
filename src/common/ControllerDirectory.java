@@ -3,6 +3,11 @@ package common;
 import mvc.controllers.IControllerDirectory;
 import mvc.controllers.MvcController;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class ControllerDirectory implements IControllerDirectory {
 
 	@Override

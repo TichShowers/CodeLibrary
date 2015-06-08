@@ -5,6 +5,11 @@ import java.util.List;
 
 import mvc.filtering.IAccessFilter;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class Route {
 
 	private String controller;

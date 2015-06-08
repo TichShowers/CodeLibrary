@@ -9,6 +9,11 @@ import models.User;
 import mvc.controllers.MvcController;
 import mvc.responses.ActionResult;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class AuthController extends MvcController {
 
 	private UserDao dao;
@@ -46,8 +51,10 @@ public class AuthController extends MvcController {
 		} else {
 			User user = users.get(0);
 			if (user.checkPassword(getParam("password", ""))) {
-				session.setAttribute("login", getParam("username", ""));
-
+				session.setAttribute("login.username", user.getUsername());
+				session.setAttribute("login.name", user.getName());
+				session.setAttribute("login.admin", user.isAdmin() ? "true" : "");
+				
 				String path = (String) session.getAttribute("stored.url");
 
 				removeSession("stored.url");
@@ -63,7 +70,10 @@ public class AuthController extends MvcController {
 	}
 
 	public ActionResult logout() {
-		removeSession("login");
+		removeSession("login.username");
+		removeSession("login.name");
+		removeSession("login.admin");
+		
 		return redirect("login");
 	}
 

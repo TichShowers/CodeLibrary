@@ -1,5 +1,10 @@
 package mvc;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class Tuple<X,Y> {
 	public final X left;
 	public final Y right;

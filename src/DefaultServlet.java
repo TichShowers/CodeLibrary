@@ -22,6 +22,11 @@ import mvc.filtering.IAccessFilter;
 import mvc.responses.ActionResult;
 import mvc.responses.ErrorResponse;
 
+/**
+ * 
+ * @author Colin Bundervoet
+ *
+ */
 public class DefaultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -82,7 +87,7 @@ public class DefaultServlet extends HttpServlet {
 
 	private void handle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String path = (request.getPathInfo() == null) ? "/" : request
 				.getPathInfo();
 
@@ -91,19 +96,12 @@ public class DefaultServlet extends HttpServlet {
 		}
 
 		Connection connection = getConnection();
-
+		
 		Tuple<Route, Map<String, String>> tuple = router.findRoute(path);
 
 		if(tuple !=null)
 		{
 			Route route = tuple.left;
-
-			String login = (String) request.getSession().getAttribute("login");
-
-			if (login != null) {
-				System.out.println("Login found for " + login);
-				request.setAttribute("user", login);
-			}
 			
 			List<IAccessFilter> filters = route.getFilters();
 
@@ -122,10 +120,10 @@ public class DefaultServlet extends HttpServlet {
 				try {
 					MvcController controller = controllers.giveController(route
 							.getController());
-
-					ActionResult result = controller.construct(request, response,
-							connection, route.getAction(), tuple.right);
 					
+					ActionResult result = controller.construct(request, response, getServletContext(), 
+							connection, route.getAction(), tuple.right);
+
 					if(result == null)
 					{
 						result = new ErrorResponse(404);
