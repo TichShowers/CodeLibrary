@@ -18,6 +18,7 @@ public class RouteConfig extends AbstractRouter {
 		resource("fragment");
 		resource("language");
 		resource("user", authFilter);
+		
 		route("/user/demote/{id}", "user", "demote", authFilter);
 		route("/user/promote/{id}", "user", "promote", authFilter);
 		route("/user/password/{id}", "user", "password", authFilter);

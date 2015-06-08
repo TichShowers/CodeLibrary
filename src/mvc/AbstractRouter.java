@@ -12,10 +12,14 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public abstract class AbstractRouter {
 
 	private Map<String, Route> routes;
+	private IAccessFilter authFilter;
 
 	public AbstractRouter() {
 		this.routes = new HashMap<>();
+		authFilter = new BasicAuthenticationFilter();
 	}
+	
+	
 	
 	public final Tuple<Route, Map<String, String>> findRoute(String route) {
 		configure();
@@ -58,7 +62,7 @@ public abstract class AbstractRouter {
 	public final void route(String url, String controller, String action,
 			boolean needsLogin) {
 		if (needsLogin) {
-			route(url, controller, action, new BasicAuthenticationFilter());
+			route(url, controller, action, authFilter);
 		} else {
 			route(url, controller, action, new ArrayList<IAccessFilter>());
 		}
@@ -103,7 +107,7 @@ public abstract class AbstractRouter {
 	public final void resource(String controller, boolean needsLogin) {
 		if(needsLogin)
 		{
-			resource(controller, new BasicAuthenticationFilter());
+			resource(controller, authFilter);
 		}
 		else
 		{

@@ -52,7 +52,7 @@ public class AuthController extends MvcController {
 
 				removeSession("stored.url");
 				if (path == null) {
-					return redirect("/");
+					return redirect("");
 				} else {
 					return redirect(path);
 				}
