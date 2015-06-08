@@ -26,7 +26,7 @@
 						<li class="nav"><a>Welcome back, ${user}!</a></li>
 					</c:if>
 					<li class="nav ${(empty param.current) ? 'active' : ''}"><a
-						href=".">Home</a></li>
+						href="/CodeLib/do">Home</a></li>
 					<li class="nav ${(param.current == 'language') ? 'active' : ''}"><a
 						href="/CodeLib/do/language">Languages</a></li>
 					<li class="nav ${(param.current == 'fragment') ? 'active' : ''}"><a
