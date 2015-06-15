@@ -42,8 +42,11 @@
 						</c:if>
 					</li>
 				</ul>
-				
-				<p class="navbar-text navbar-right">Welcome back, ${name}!</p>
+
+				<c:if test="${! empty name}">
+					<p class="navbar-text navbar-right">Welcome back, ${name}!</p>
+				</c:if>
+
 			</div>
 		</div>
 	</div>

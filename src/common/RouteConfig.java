@@ -26,7 +26,7 @@ public class RouteConfig extends AbstractRouter {
 		route("/user/password/{id}", "user", "password", authFilter);
 		
 		route("/comment/new/{fragment}", "comment", "new", true);
-		route("/comment/delete/{fragment}/{id}", "comment", "delete", authFilter);
+		route("/comment/delete/{fragment}/{id}", "comment", "delete", true);
 		
 		route("/settings/", "setting", "index", true);
 		route("/settings/password/", "setting", "password", true);

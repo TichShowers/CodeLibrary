@@ -30,9 +30,10 @@ public class CommentController extends MvcController {
 
 	@Override
 	public ActionResult handle(String action, Map<String, String> parameters) {
+		User user = giveLoggedInUser();
+		
 		if(action.equals("new"))
 		{
-			User user = giveLoggedInUser();
 			Comment comment = new Comment(0, parseIntegerParameter(parameters.get("fragment")), user, new Date(), getParam("what", ""));
 			
 			dao.insert(comment);
@@ -40,7 +41,14 @@ public class CommentController extends MvcController {
 		}
 		if(action.equals("delete"))
 		{
-			dao.remove(parseIntegerParameter(parameters.get("id")));
+			int id = parseIntegerParameter(parameters.get("id"));
+			Comment comment = dao.read(id);
+			
+			if(user.getId() == comment.getUser().getId())
+			{
+				dao.remove(parseIntegerParameter(parameters.get("id")));
+			}
+			
 			return redirect("fragment/show/" + parameters.get("fragment"));
 		}
 		return null;

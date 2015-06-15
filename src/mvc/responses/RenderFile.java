@@ -17,6 +17,8 @@ public abstract class RenderFile implements ActionResult {
 	public void handle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		response.setCharacterEncoding("utf-8");
+		
 		String login = (String) request.getSession().getAttribute("login.username");
 		String name = (String) request.getSession().getAttribute("login.name");
 		String admin = (String) request.getSession().getAttribute("login.admin");

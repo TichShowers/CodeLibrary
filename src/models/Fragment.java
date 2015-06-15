@@ -14,6 +14,25 @@ public class Fragment {
 	private String code;
 	private int language;
 	private Date at;
+	private int numcomments;
+
+	public Fragment(int id, String title, String code,  Date at,
+			int language, int numcomments) {
+		this.id = id;
+		this.title = title;
+		this.code = code;
+		this.language = language;
+		this.at = at;
+		this.numcomments = numcomments;
+	}
+
+	public int getNumcomments() {
+		return numcomments;
+	}
+
+	public void setNumcomments(int numcomments) {
+		this.numcomments = numcomments;
+	}
 
 	public int getId() {
 		return id;
@@ -56,11 +75,6 @@ public class Fragment {
 	}
 
 	public Fragment(int id, String title, String code, Date at, int language) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.code = code;
-		this.at = at;
-		this.language = language;
+		this(id, title, code, at, language, 0);
 	}
 }

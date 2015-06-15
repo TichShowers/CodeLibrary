@@ -35,7 +35,7 @@ public class FragmentController extends ResourceController {
 
 	@Override
 	public ActionResult index() {
-		List<Fragment> fragments = fragmentDao.readAll(); 
+		List<Fragment> fragments = fragmentDao.readAllWithNumberOfComments(); 
 		return view("fragment-list.jsp", fragments);
 	}
 
@@ -43,7 +43,8 @@ public class FragmentController extends ResourceController {
 	public ActionResult show(int index) {
 		Fragment fragment = fragmentDao.read(index);
 		
-		List<Comment> comments = commentDao.search("fragment", fragment.getId());
+		//List<Comment> comments = commentDao.search("fragment", fragment.getId());
+		List<Comment> comments = commentDao.searchWithNewestFirst(fragment.getId());
  		
 		Language langauge = languageDao.read(fragment.getLanguage());
 		

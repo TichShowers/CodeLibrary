@@ -26,6 +26,7 @@
 			<tr>
 				<th>id</th>
 				<th>Title</th>
+				<th></th>
 				<th>Created</th>
 				<th>Actions</th>
 			</tr>
@@ -35,6 +36,7 @@
 				<tr>
 					<td>${R.id}</td>
 					<td><a href="/CodeLib/do/fragment/show/${R.id}">${R.title}</</a></td>
+					<td>${R.numcomments} comment<c:if test="${ R.numcomments != 1}">s</c:if></td>
 					<td>${R.at}</td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group">

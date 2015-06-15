@@ -37,6 +37,21 @@ public class CommentDao extends DatabaseDao<Comment> {
 	public String[] getColumnNames() {
 		return _columnNames;
 	}
+	
+	public List<Comment> searchWithNewestFirst(int fragment)
+	{
+		try {
+			PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM comments WHERE fragment = ? ORDER BY at DESC, id DESC");
+			
+			statement.setInt(1, fragment);
+			
+			return fetchGroupResult(statement.executeQuery());
+		}
+		catch(SQLException e)
+		{
+			return new ArrayList<Comment>();
+		}
+	}
 
 	@Override
 	public List<Comment> fetchGroupResult(ResultSet result) throws SQLException {

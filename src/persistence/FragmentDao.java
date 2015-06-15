@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import models.Comment;
 import models.Fragment;
 import persistence.common.DatabaseDao;
 
@@ -33,6 +34,37 @@ public class FragmentDao extends DatabaseDao<Fragment> {
 	@Override
 	public String[] getColumnNames() {
 		return _columnNames;
+	}
+	
+	public List<Fragment> readAllWithNumberOfComments()
+	{
+		try {
+			PreparedStatement statement = getConnection().prepareStatement("SELECT F.id, F.title, F.code, F.at, F.language, count(c.id) as comments FROM fragments F LEFT JOIN comments c ON F.id = C.fragment GROUP BY f.id;");
+	
+			ResultSet result = statement.executeQuery();
+			
+			List<Fragment> list = new ArrayList<>();
+			
+			while(result.next())
+			{
+				int id = result.getInt(_columnNames[0]);
+				String title = result.getString(_columnNames[1]);
+				String code = result.getString(_columnNames[2]);
+				Date at = result.getDate(_columnNames[3]);
+				int language = result.getInt(_columnNames[4]);
+				int comments = result.getInt("comments");
+				
+				Fragment fragment = new Fragment(id, title, code, at, language, comments);
+				
+				list.add(fragment);
+			}
+			
+			return list;
+		}
+		catch(SQLException e)
+		{
+			return new ArrayList<Fragment>();
+		}
 	}
 
 	@Override

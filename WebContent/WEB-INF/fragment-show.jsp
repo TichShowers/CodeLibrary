@@ -18,7 +18,8 @@
 	<main class="container">
 
 	<h2>
-		Fragment ${model.fragment.title} <a href="/CodeLib/do/fragment/edit/${ model.fragment.id }"
+		Fragment ${model.fragment.title} <a
+			href="/CodeLib/do/fragment/edit/${ model.fragment.id }"
 			class="btn btn-sm btn-primary"><span
 			class="glyphicon glyphicon-pencil"></span> Edit this fragment</a>
 	</h2>
@@ -26,13 +27,13 @@
 	<p>Written in ${model.language.name}</p>
 
 	<section style="margin: 10px 0;">
-		<code> ${model.fragment.code} </code>
+		<textarea disabled class="form-control">${model.fragment.code}</textarea>
 	</section>
 
 	<ul class="list-group col-xs-12">
 		<c:forEach var="comment" items="${model.comments}">
 			<li class="list-group-item"><c:if
-					test="${!empty admin && admin}">
+					test="${! empty username && username == comment.user.username}">
 					<a
 						href="/CodeLib/do/comment/delete/${model.fragment.id}/${comment.id}"
 						class="btn btn-xs btn-danger" style="float: right;">delete</a>
@@ -44,20 +45,25 @@
 					<fmt:formatDate value="${comment.at}" pattern="EEEE, dd MMMM yyyy" />
 					:
 				</p>
-				<p><i class="glyphicon glyphicon-comment"></i> ${comment.what}</p></li>
+				<p>
+					<i class="glyphicon glyphicon-comment"></i> ${comment.what}
+				</p></li>
 		</c:forEach>
-		<li class="list-group-item">
-			<form action="/CodeLib/do/comment/new/${model.fragment.id}"
-				method=post class="form">
-				<div class="form-group">
-					<label for="what" class="sr-only">Comment</label>
-					<textarea name="what" cols=80 rows=10 class="form-control"
-						placeholder="Write a comment here..."></textarea>
-				</div>
+		<c:if test="${! empty name}">
+			<li class="list-group-item">
+				<form action="/CodeLib/do/comment/new/${model.fragment.id}"
+					method=post class="form">
+					<div class="form-group">
+						<label for="what" class="sr-only">Comment</label>
+						<textarea name="what" cols=80 rows=10 class="form-control"
+							placeholder="Write a comment here..."></textarea>
+					</div>
 
-				<input class="btn btn-primary" type="submit" value="Save" class="">
-			</form>
-		</li>
+					<input class="btn btn-primary" type="submit" value="Save" class="">
+				</form>
+			</li>
+		</c:if>
+
 	</ul>
 
 
